@@ -1,0 +1,17 @@
+- name: Exercice 7 - Redémarrage Apache
+  hosts: web_servers
+  tasks:
+    - name: Installation Apache
+      apt:
+        name: apache2
+        state: latest
+      become: yes
+    - name: Redémarrer Apache
+      service:
+        name: apache2
+        state: restarted
+      register: apache_restat_output
+      become: yes
+    - name: affiche retour tache 2
+      debug:
+        msg: apache_restat_output

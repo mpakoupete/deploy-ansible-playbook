@@ -1,0 +1,17 @@
+---
+ - hosts : all
+   tasks :
+    - name : Création des utilisateurs sur Web_servers
+      user : 
+        name : "{{ item.username }}"
+        uid : "{{ item.uid }}"
+        state: present
+      with_items :
+      - username: lab1
+        uid: 2001
+      - username: lab2
+        uid: 2002
+      - username: lab3
+        uid: 3003
+      - username: lab4
+        uid: 3004
